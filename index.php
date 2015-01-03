@@ -69,11 +69,17 @@
 			</p>
 			<input type="submit" value="提交">
 		</form>
-<!--         <form action="view/logout.php" method="post">
+
+        <form action="logout.php" method="post">
         	<input type="submit" value="logout">
         </form>
- -->
-		<button onclick="work()" type="button">logout</button>	
+        
+	 <!-- 	<a href="logout.php">
+        	<button value="logout">
+        		logout
+        	</button>
+        </a>  -->
+
 
         <?php
         	}
@@ -87,14 +93,5 @@
         	?>
         </div>
 		
-		<script type="text/javascript">
-			function work() {
-				 <?php
-					session_destroy();
-				//	header("Location: index.php"); //出错
-				 ?>
-				 window.location.href='index.php';
-			}
-		</script>
 	</body>
 </html>

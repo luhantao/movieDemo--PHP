@@ -18,7 +18,6 @@
         }
 
         function dologin(){
-            session_start(); 
             $link = mysqli_connect('localhost','root','83795381','myphp') ; //connect to database
             //$link2 = mysql_select_db('myphp',$link) ; //mysqli函数用不到
             $SQL = "select * from users where user_name='$this->user' and user_password='$this->pass'";
@@ -27,11 +26,11 @@
             //这句返回数据表的各栏位数据
             $contain = mysqli_fetch_array($result_handle);
             if ($nums != 1) {
-                $result = "登陆失败！用户名或密码错误！";
+                $result = "登录失败！用户名或密码错误！";
             }
             else{
-                $result = "登陆成功！欢迎您，".$this->user." ! ";
-                $lifetime = 300; //设置session生命周期（秒）
+                $result = "登录成功！欢迎您，".$this->user." ! ";
+                $lifetime = 120; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
                 $_SESSION['user'] = "$this->user" ;
                 $_SESSION['user_whether_login'] = 1; 
@@ -42,11 +41,6 @@
         } 
 
         function doreg (){
-            if ($this->user == "" | $this->pass == ""){
-                $result = "用户名或密码不能为空！";
-                return $result ;
-            }
-            session_start(); 
             $link = mysqli_connect('localhost','root','83795381','myphp') ; //connect to database
             $SQL = "select * from users where user_name='$this->user'";
             $result_handle = mysqli_query($link , $SQL);
@@ -67,6 +61,30 @@
             }   
             return $result;
         }
+        function dochange_pass (){
+           // session_start(); 
+            $link = mysqli_connect('localhost','root','83795381','myphp') ; //connect to database
+            $SQL = "select * from users where user_name='$this->user'";
+            $result_handle = mysqli_query($link , $SQL);
+            $contain = mysqli_fetch_array($result_handle);
+            if ($contain['user_password'] != $this->pass ){
+                $result = "原密码错误！";
+                return $result;
+            }
+            else {
+                $SQL2 = "update users set user_password='$this->change_pass' where user_name='$this->user'";
+                $result_handle = mysqli_query($link , $SQL2);
+                if ($result_handle){
+                    $result = "修改成功！";
+                }
+                else{
+                    $result = "修改出错！";
+                }
+                return $result;
+
+            }
+        }
+
     }
 
 ?>

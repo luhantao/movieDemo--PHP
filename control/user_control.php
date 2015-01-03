@@ -11,7 +11,8 @@
 			$stored_pass = md5($pass);
 			$stored_change_pass = md5($change_pass);
 			$this->handle = new user_query ($name , $stored_pass ,
-			 $stored_change_pass , $email , $phone);
+			     $stored_change_pass , $email , $phone);
+
 		}
 		function login(){
 			$result = $this->handle ->dologin();	
@@ -22,7 +23,7 @@
 			return $result;	
 		}
 		function change_pass(){
-			$result = $this->handle ->doreg();
+			$result = $this->handle ->dochange_pass();
 			return $result;	
 		}
 	}

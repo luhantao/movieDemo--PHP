@@ -1,4 +1,5 @@
 <?php
+	session_start(); 
     require_once ("../control/user_control.php");
 ?>
 <html>
@@ -12,8 +13,17 @@
 			$old_password = $_POST['old_password'];
 			$new_password1 = $_POST['new_password1'];
 			$new_password2 = $_POST['new_password2'];
-			$handle = new user_control($name , $password);
-			$result = $handle ->change_pass ();
+            if ($old_password == ""| $new_password1 == ""| $new_password2 == ""){
+                $result = "密码不能为空！";
+            }
+			elseif ($new_password1 != $new_password2){
+				$result = "两次输入的新密码不同！" ;
+			}
+			else {
+				$handle = new user_control($_SESSION['user'] , $old_password ,
+				   $new_password1 , null , null );
+				$result = $handle -> change_pass (); 
+			}
 
             //echo $_SESSION['user'];
 		?>

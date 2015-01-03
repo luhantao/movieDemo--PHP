@@ -1,4 +1,5 @@
 <?php
+	session_start();
     require_once ("../control/user_control.php");
 ?>
 <html>
