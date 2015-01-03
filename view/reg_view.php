@@ -1,5 +1,5 @@
 <?php
-    require_once ("dbquery.php");
+    require_once ("../control/user_control.php");
 ?>
 <html>
 	<head>
@@ -11,12 +11,16 @@
 		<?php
 			$name = $_POST['user'];
 			$password = $_POST['password'];
-			$result = doreg($name, $password);
+			$email = $_POST['email'];
+			$phone = $_POST['phone'];
+			$handle = new user_control($name , $password ,
+			 null , $email , $phone );
+			$result = $handle -> reg(); 
 		?>
 				<br>
                 <h2><?php echo $result ?> </h2>
 		
-		<a href ="index.php"> 返回主页面 </a>
+		<a href ="../index.php"> 返回主页面 </a>
 	
 	</body>
 </html>
