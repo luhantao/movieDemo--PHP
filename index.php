@@ -1,97 +1,598 @@
-<html>
-	<head>
-<meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>主页面index.php</title>
-	</head>
-	<body>
-		<?php
-			session_start();
-			// if (!isset($_SESSION['user']) ){
-			// 	$_SESSION['user']="";
-			// }
-			// if ($_SESSION['user'] == ""){
-			// 	echo "用户没登录，请登录！";	
-			// }
-			// else {
-			// 	echo "欢迎你,".$_SESSION['user']." !";	
-			// }
-			if (!isset($_SESSION['user_whether_login']) ){
-				$_SESSION['user_whether_login'] = 0 ;		
-			}
-			if ($_SESSION['user_whether_login']== 0) {
-				echo "用户没登录，请登录！";
-		?>
-		<h1>注册</h1>
-		<form action="view/reg_view.php" method="post"> 
-			<p>用户名:
-				<input type="text" name="user"><br>
-			</p>
-			<p>密码：
-				<input type="password" name="password"><br>
-			</p>
-			<p>邮件地址:
-				<input type="email" name="email"><br>
-			</p>
-			<p>联系电话:
-				<input type="text" name="phone"><br>
-			</p>
-			<input type="submit" value="register">
-		</form>
-		<h3>&nbsp;</h3>
-			
-		<h1>登陆</h1>
-		<form action="view/login_view.php" method="post"> 
-			<p>用户名:
-				<input type="text" name="user"><br>
-			</p>
-			<p>密码：
-				<input type="password" name="password"><br>
-			</p>
-			<input type="submit" value="login">
-		</form>
-		<?php 
-			}
-			else {
-				echo "欢迎你,".$_SESSION['user']." !";
-				echo '<p><br></p>';
-        ?>
-		<h1>修改密码</h1>
-		<form action="view/changepass_view.php" method="post"> 
-			<p>原密码:
-				<input type="password" name="old_password"><br>
-			</p>
-			<p>新密码：
-				<input type="password" name="new_password1"><br>
-			</p>
-			<p>再次输入新密码：
-				<input type="password" name="new_password2"><br>
-			</p>
-			<input type="submit" value="提交">
-		</form>
+    <title>Theme Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-combobox.css">
+    <link rel="stylesheet" href="css/select2Buttons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style type ="text/css">
+    .pic{
+        background-image:url(image/back3.jpg);
+        background-attachment: fixed ;
+        background-repeat: repeat ;
+    }
+    </style>
 
-        <form action="logout.php" method="post">
-        	<input type="submit" value="logout">
-        </form>
-        
-	 <!-- 	<a href="logout.php">
-        	<button value="logout">
-        		logout
-        	</button>
-        </a>  -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-combobox.js"></script>
+    <script src="js/jQuery.select2Buttons.js"></script>
+    
+</head>
+<!-- style="background-image:url(image/back2.jpg) ;background-repeat: no-repeat ;background-attachment: fixed " -->
+<body class="pic" role="document" > 
+<div class="panel panel-default">
+  <img src="image/2.jpg" style="width: 100%; height: 30%; margin-top: 52px" >
+</div>
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+   <!--   <div >
+        <p><font size="5">&nbsp</font></p>
+        <img data-src="holder.js/200x200" class="img-thumbnail" alt="200x200" src="image/2.jpg" style="width: 100%; height: 23%;">
+      </div>
+   -->
+ 
+ <!-- nav标签为整个顶栏的标签 -->     
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" >
+
+    <!-- 标签文字+链接定义 --> 
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >   
+          <ul class="nav navbar-nav">
+            <li  >
+               <a style= "position: absoulute ;left: 20% ;color: #ffffff" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 您好，欢迎来到&nbsp</a>
+            </li>
+            <li >
+               <a href="index.php" style= "color: #ffff00">&nbsp&nbsp&nbsp爆米花电影网</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <?php
+              session_start();
+              if (!isset($_SESSION['user_whether_login']) ){
+                  $_SESSION['user_whether_login'] = 0 ;   
+              }
+              if ($_SESSION['user_whether_login']== 0) {
+            ?>
+            <li class ="active ">
+               <a id="modal-1" href="#modal-container-1" role="button" class="btn" data-toggle="modal">注册</a>
+            </li>
+            <li class ="active ">
+               <a id="modal-2" href="#modal-container-2" role="button" class="btn" data-toggle="modal">登陆</a>
+            </li>
+            <?php 
+              }
+              else {
+                  
+            ?>
+            <li class ="active ">
+               <a>欢迎您，<?php echo $_SESSION['user']; ?> ! </a>
+            </li>
+            <li class ="active ">
+               <a href="logout.php">退出</a>
+            </li>
+            <li class ="active ">
+               <a id="modal-1" href="#modal-container-6" role="button" class="btn" data-toggle="modal">电影票购买</a>
+            </li>
+            <li class ="active ">
+               <a id="modal-3" href="#modal-container-3" role="button" class="btn" data-toggle="modal">修改用户信息</a>
+            </li>
+            <li class ="active ">
+               <a id="modal-4" href="#modal-container-4" role="button" class="btn" data-toggle="modal">我的订单</a>
+            </li>
+            <?php
+              }
+            ?>
+
+            <li class ="active ">
+               <a id="modal-5" href="#modal-container-5" role="button" class="btn" data-toggle="modal">关于我们</a>
+            </li>   
+            <li>
+               <a style= "position: absoulute ;right: 20%" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </a>
+            </li>
+
+          </ul>
+      </div>
+      
+<!--注册弹窗 -->
+      <div class="modal fade" id="modal-container-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
+                  &times;
+            </button>
+            <p>
+               <h1 align ="center"> <font size =7><b>注册</b></font></h1>
+               &nbsp <br>
+            </p>
+
+        <div class="col-md-12 column">
+
+            <form class="form-horizontal" onSubmit="return regcheck(this)" role="form" name="reg" action="view/reg_view.php" method="post">
+              <div class="form-group">          
+                <label for="inputText3" class="col-sm-3 control-label">输入用户名</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="inputText3" name="user"/>
+                </div>          
+              </div>
+              <div class="form-group"> 
+                <label for="inputPassword3" class="col-sm-3 control-label">输入密码</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputPassword3"  name="password"/>
+                </div>        
+              </div>
+              <div class="form-group">           
+                <label for="inputPassword3" class="col-sm-3 control-label">确认密码</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputPassword3"  name="password2"/>
+                </div>            
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">输入邮箱</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="inputEmail3" name="email"/>
+                </div>
+              </div>
+              <div class="form-group">          
+                <label for="inputNumber3" class="col-sm-3 control-label">输入电话</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="inputNumber3" name="phone"/>
+                </div>          
+              </div>
+
+              <div class="form-group">
+                <label for="inputSex3" class="col-sm-3 control-label">性别</label>
+                <div class="col-sm-8">
+                  <input type="radio"  id="male"  name="userSex"/>
+                    男&nbsp &nbsp
+                  <input type="radio"  id="female"  name="userSex"/>
+                    女
+                </div>
+              </div>   
+
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-primary btn-lg" >注册</button>
+                </div>
+              </div>
+            </form>
+          </div>  
+          <p>
+            &nbsp <br>       
+            &nbsp <br>
+          </p>
+
+          </div>       
+        </div>   
+      </div>
+      
+      <script type="text/javascript">
+        function regcheck(form){
+             if (form.user.value ==""||form.password.value ==""||form.password2.value ==""||form.email.value ==""||form.phone.value ==""){
+               alert("信息栏不能有空！");
+               return false;
+             }
+             else if (form.password.value != form.password2.value){
+               alert("前后输入密码不一致！");
+               return false;
+             }
+             else {
+               return true;
+             }
+          
+        }
+      </script>
+
+<!--修改用户信息弹窗 -->
+      <div class="modal fade" id="modal-container-3" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
+                  &times;
+            </button>
+            <p>
+               <h1 align ="center"> <font size =7><b>修改用户信息</b></font></h1>
+               &nbsp <br>
+            </p>
+
+        <div class="col-md-12 column">
+
+            <form class="form-horizontal" role="form" name="login" action="dologin.jsp" method="post">
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">输入邮箱</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="inputEmail3" name="userEmail"/>
+                </div>
+              </div>
+              <div class="form-group">          
+                <label for="inputNumber3" class="col-sm-3 control-label">输入电话</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="inputNumber3" name="userNumber"/>
+                </div>          
+              </div>
+
+              <div class="form-group">
+                <label for="inputSex3" class="col-sm-3 control-label">性别</label>
+                <div class="col-sm-8">
+                  <input type="radio"  id="male"  name="userSex"/>
+                    男&nbsp &nbsp
+                  <input type="radio"  id="female"  name="userSex"/>
+                    女
+                </div>
+              </div>   
+
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-primary btn-lg">修改</button>
+                </div>
+              </div>
+            </form>
+          </div>  
+          <p>
+            &nbsp <br>       
+            &nbsp <br>
+          </p>
+
+          </div>       
+        </div>   
+      </div>
+
+<!--登陆 -->
+      <div class="modal fade" id="modal-container-2" onSubmit="return logcheck(this)" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id = "open_div">
+          <div class="modal-content" >
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
+                  &times;
+            </button>
+            <p>
+               <h1 align ="center"> <font size =7><b>登陆</b></font></h1>
+               &nbsp <br>
+            </p>
+
+        <div class="col-md-12 column">
+
+            <form class="form-horizontal" role="form" name="login" action="view/login_view.php" method="post">
+              <div class="form-group">
+               
+                <label for="inputText3" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="inputText3" name="user"/>
+                </div>
+                
+              </div>
+              <div class="form-group">
+              
+                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" id="inputPassword3"  name="password"/>
+                </div>
+                
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="checkbox">
+                    <label><input type="checkbox" />记住我</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary btn-lg">登陆</button>
+                </div>
+              </div>
+            </form>
+          </div>  
+            <p>
+               &nbsp <br>       
+               &nbsp <br>
+            </p>
+
+          </div>       
+        </div>   
+      </div>
+
+      <script type="text/javascript">
+        function logcheck(form){
+             if (form.user.value ==""||form.password.value ==""){
+               alert("用户名或密码不能有空！");
+               return false;
+             }
+             else {
+               return true;
+             }
+          
+        }
+      </script>
+
+<!--我的订单 -->   
+      <div class="modal fade" id="modal-container-4" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
+                  &times;
+            </button>
+            <p>
+               <h1 align ="center"> <font size =7><b>我的订单</b></font></h1>
+               &nbsp <br>
+            </p>
+          <p>
+            &nbsp <br>       
+            &nbsp <br>
+          </p>
+          </div>       
+        </div>   
+      </div>
+
+<!--关于我们 -->   
+      <div class="modal fade" id="modal-container-5" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" >
+            <p>
+                <img alt="200x200" src="image/baomihua.jpg" style="width: 100%; height: 43%;margin-bottom:-10px">
+            </p>
+          </div>       
+        </div>   
+      </div> 
 
 
-        <?php
-        	}
-        ?>
-        <div>
-        	<?php 
-        		for ($i=1; $i <7 ; $i++) { 
-        			echo '<img src="image/' , "$i" , '.jpg" style="width: 500px" />';			
-        			echo '<p><br></p>';
-        		}
-        	?>
+<!--购票页面 -->   
+      <div class="modal fade" id="modal-container-6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id = "open_div">
+          <div class="modal-content" >
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
+                  &times;
+            </button>
+            <p>
+               <h1 align ="center"> <font size =7><b>购票页面</b></font></h1>
+               &nbsp <br>
+            </p>
+
+        <div class="col-md-12 column">
+            <form class="form-horizontal" role="form" name="login" action="dologin.jsp" method="post">
+              <div class="form-group">            
+                <label for="inputText3" class="col-sm-2 control-label">电影场次</label>
+                <div class="col-sm-2">
+                  <select class="combobox" name="time" >
+                    <option></option>
+                    <option value="a">9:00 -- 12:00</option>
+                    <option value="b">12:00 -- 15:00</option>
+                    <option value="c">15:00 -- 18:00</option>
+                    <option value="d">18:00 -- 21:00</option>
+                    <option value="e">21:00 -- 24:00</option>
+                  </select>               
+                </div>                
+              </div>
+
+              <div class="form-group">              
+                <div class="col-sm-12">
+                  <hr>
+                  <h1 align ="center"> <font size =5><i><b>电影屏幕</b></i></font></h1>
+                </div>
+              </div>
+          
+              <div class="form-group">              
+                <label for="inputPassword3" class="col-sm-2 control-label">选座</label>
+                <div class="col-sm-8">
+                  <select class="standard-demo" name="simple-select">
+                    <option value="11">01-1</option>
+                    <option value="12">01-2</option>
+                    <option value="13">01-3</option>
+                    <option value="14">01-4</option>
+                    <option value="15">01-5</option>
+                    <option value="16">01-6</option>
+                    <option value="17">01-7</option>
+                    <option value="18">01-8</option>
+
+                    <option value="21">02-1</option>
+                    <option value="22">02-2</option>
+                    <option value="23">02-3</option>
+                    <option value="24">02-4</option>
+                    <option value="25">02-5</option>
+                    <option value="26">02-6</option>
+                    <option value="27">02-7</option>
+                    <option value="28">02-8</option>
+
+                    <option value="31">03-1</option>
+                    <option value="32">03-2</option>
+                    <option value="33">03-3</option>
+                    <option value="34">03-4</option>
+                    <option value="35">03-5</option>
+                    <option value="36">03-6</option>
+                    <option value="37">03-7</option>
+                    <option value="38">03-8</option>
+
+                    <option value="41">04-1</option>
+                    <option value="42">04-2</option>
+                    <option value="43">04-3</option>
+                    <option value="44">04-4</option>
+                    <option value="45">04-5</option>
+                    <option value="46">04-6</option>
+                    <option value="47">04-7</option>
+                    <option value="48">04-8</option>
+
+                    <option value="51">05-1</option>
+                    <option value="52">05-2</option>
+                    <option value="53">05-3</option>
+                    <option value="54">05-4</option>
+                    <option value="55">05-5</option>
+                    <option value="56">05-6</option>
+                    <option value="57">05-7</option>
+                    <option value="58">05-8</option>
+
+                    <option value="61">06-1</option>
+                    <option value="62">06-2</option>
+                    <option value="63">06-3</option>
+                    <option value="64">06-4</option>
+                    <option value="65">06-5</option>
+                    <option value="66">06-6</option>
+                    <option value="67">06-7</option>
+                    <option value="68">06-8</option>
+
+                  </select>
+                  <p>&nbsp<br> </p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2">
+                  <div class="col-sm-11">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-success btn-block btn-lg">购买</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>  
+            <p>
+               &nbsp <br>       
+               &nbsp <br>
+            </p>
+
+          </div>       
+        </div>   
+      </div>
+    </nav> 
+
+
+<!-- 滚动幻灯片 -->
+      <div class="carousel slide" id="carousel-343775" style="margin-top: -20px">
+        <ol class="carousel-indicators">
+          <li data-slide-to="0" data-target="#carousel-343775">
+          </li>
+          <li data-slide-to="1" data-target="#carousel-343775" class="active">
+          </li>
+          <li data-slide-to="2" data-target="#carousel-343775">
+          </li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item">
+            <img alt="" src="image/congcongnanian2.jpg" style="width: 100%; "/>
+            <div class="carousel-caption">
+              <h4>
+                First Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+          <div class="item active">
+            <img alt="" src="image/quanchengtongji2.jpg" style="width: 100%; "/>
+            <div class="carousel-caption">
+              <h4>
+                Second Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <img alt="" src="image/xingjichuanyue2.jpg" style="width: 100%; "/>
+            <div class="carousel-caption">
+              <h4>
+                Third Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+        </div> <a class="left carousel-control" href="#carousel-343775" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-343775" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div>
+      
+<!-- 电影信息界面 -->
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="image/bbbb.jpg" style="width: 100%"/>
+            <div class="caption">
+              <h3>
+                Thumbnail label
+              </h3>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p>
+                 <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+              </p>
+            </div>
+          </div>
         </div>
-		
-	</body>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="image/aaaa.jpg"/>
+            <div class="caption">
+              <h3>
+                Thumbnail label
+              </h3>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p>
+                 <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="image/cccc.jpg" />
+            <div class="caption">
+              <h3>
+                Thumbnail label
+              </h3>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+              <p>
+                 <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="col-md-12 column" >
+          <blockquote style="background-color:#ffffff ">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+            </p> <small>Someone famous <cite>Source Title</cite></small>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('.combobox').combobox();
+});
+</script>
+<script>
+$('.standard-demo').select2Buttons();
+$('select[name=js-callback-select]').change(function() {
+alert('Changed to ' + $(this).val());
+});
+$('select[name=no-default-select]').select2Buttons({noDefault: true});
+</script>
+
+</body>
 </html>

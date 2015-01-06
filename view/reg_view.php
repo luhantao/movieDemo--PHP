@@ -14,14 +14,9 @@
 			$password = $_POST['password'];
 			$email = $_POST['email'];
 			$phone = $_POST['phone'];
-            if ($name == ""| $password == ""| $email == ""| $phone == ""){
-                $result = "用户信息栏不能为空！";
-            }
-            else {
-				$handle = new user_control($name , $password ,
-				   null , $email , $phone );
-				$result = $handle -> reg(); 
-            }
+			$handle = new user_control($name , $password ,
+			   null , $email , $phone );
+			$result = $handle -> reg(); 
 		?>
 				<br>
                 <h2><?php echo $result ?> </h2>

@@ -30,7 +30,7 @@
             }
             else{
                 $result = "登录成功！欢迎您，".$this->user." ! ";
-                $lifetime = 120; //设置session生命周期（秒）
+                $lifetime = 30; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
                 $_SESSION['user'] = "$this->user" ;
                 $_SESSION['user_whether_login'] = 1; 
