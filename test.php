@@ -16,6 +16,7 @@
 			// else {
 			// 	echo "欢迎你,".$_SESSION['user']." !";	
 			// }
+			
 			if (!isset($_SESSION['user_whether_login']) ){
 				$_SESSION['user_whether_login'] = 0 ;		
 			}
@@ -41,7 +42,7 @@
 		<h3>&nbsp;</h3>
 			
 		<h1>登陆</h1>
-		<form action="view/login_view.php" method="post"> 
+		<form action="view/login_view2.php" onSubmit="return logcheck(this)" method="post"> 
 			<p>用户名:
 				<input type="text" name="user"><br>
 			</p>
@@ -50,6 +51,22 @@
 			</p>
 			<input type="submit" value="login">
 		</form>
+		 <script type="text/javascript">
+        function logcheck(form){
+             if (form.user.value ==""){
+               alert("用户名不能为空！");
+               return false;
+             }
+             else if (form.password.value ==""){
+               alert("密码不能为空！");
+               return false;
+             }
+             else {
+               return true;
+             }
+        }
+      </script>
+
 		<?php 
 			}
 			else {
@@ -90,8 +107,22 @@
         			echo '<img src="image/test' , "$i" , '.jpg" style="width: 500px" />';			
         			echo '<p><br></p>';
         		}
+
+				if (!isset($_SESSION['alert']) ){
+					$_SESSION['alert'] = 0;
+				}
+				else if ($_SESSION['alert'] ==1){
+					$_SESSION['alert'] = 0;
+					echo '<script type="text/javascript">alert("登录失败！用户名或密码错误！");</script>' ;
+				}
+				else if ($_SESSION['alert'] ==2){
+					$_SESSION['alert'] = 0;
+					echo '<script type="text/javascript">alert("登录成功！");</script>' ;
+				}
+
+
         	?>
         </div>
-		
+
 	</body>
 </html>

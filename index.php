@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Theme Template for Bootstrap</title>
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
@@ -57,6 +56,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <?php
+            //顶栏php代码**********************************************************************
               session_start();
               if (!isset($_SESSION['user_whether_login']) ){
                   $_SESSION['user_whether_login'] = 0 ;   
@@ -64,22 +64,36 @@
               if ($_SESSION['user_whether_login']== 0) {
             ?>
             <li class ="active ">
-               <a id="modal-1" href="#modal-container-1" role="button" class="btn" data-toggle="modal">注册</a>
-            </li>
-            <li class ="active ">
                <a id="modal-2" href="#modal-container-2" role="button" class="btn" data-toggle="modal">登陆</a>
             </li>
-            <?php 
+            <li class ="active ">
+               <a id="modal-1" href="#modal-container-1" role="button" class="btn" data-toggle="modal">注册</a>
+            </li>
+            <?php
+              //顶栏php代码********************************************************************** 
               }
               else {
-                  
             ?>
-            <li class ="active ">
-               <a>欢迎您，<?php echo $_SESSION['user']; ?> ! </a>
+            <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="#ffffff">
+                     欢迎您，<?php echo $_SESSION['user']; ?> ! 
+                  </font>
+                  <strong class="caret">
+                  </strong>
+               </a>
+              <ul class="dropdown-menu">
+                <li>
+                   <a href="#">修改密码</a>
+                </li>
+                <li>
+                   <a href="logout.php">修改个人信息</a>
+                </li>
+                <li>
+                   <a href="logout.php">退出</a>
+                </li>
+              </ul>
             </li>
-            <li class ="active ">
-               <a href="logout.php">退出</a>
-            </li>
+
             <li class ="active ">
                <a id="modal-1" href="#modal-container-6" role="button" class="btn" data-toggle="modal">电影票购买</a>
             </li>
@@ -90,6 +104,7 @@
                <a id="modal-4" href="#modal-container-4" role="button" class="btn" data-toggle="modal">我的订单</a>
             </li>
             <?php
+              //顶栏php代码**********************************************************************
               }
             ?>
 
@@ -140,7 +155,7 @@
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-3 control-label">输入邮箱</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control" id="inputEmail3" name="email"/>
+                  <input type="text" class="form-control" id="inputEmail3" name="email"/>
                 </div>
               </div>
               <div class="form-group">          
@@ -249,7 +264,7 @@
       </div>
 
 <!--登陆 -->
-      <div class="modal fade" id="modal-container-2" onSubmit="return logcheck(this)" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modal-container-2"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" id = "open_div">
           <div class="modal-content" >
             <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
@@ -262,7 +277,7 @@
 
         <div class="col-md-12 column">
 
-            <form class="form-horizontal" role="form" name="login" action="view/login_view.php" method="post">
+            <form class="form-horizontal" onSubmit="return logcheck(this)" role="form" name="login" action="view/login_view.php" method="post">
               <div class="form-group">
                
                 <label for="inputText3" class="col-sm-2 control-label">用户名</label>
@@ -304,14 +319,17 @@
 
       <script type="text/javascript">
         function logcheck(form){
-             if (form.user.value ==""||form.password.value ==""){
-               alert("用户名或密码不能有空！");
+             if (form.user.value ==""){
+               alert("用户名不能为空！");
+               return false;
+             }
+             else if (form.password.value ==""){
+               alert("密码不能为空！");
                return false;
              }
              else {
                return true;
              }
-          
         }
       </script>
 
@@ -582,17 +600,32 @@
 
 
 <script type="text/javascript">
-$(document).ready(function(){
-$('.combobox').combobox();
+    $(document).ready(function(){
+    $('.combobox').combobox();
 });
 </script>
 <script>
-$('.standard-demo').select2Buttons();
-$('select[name=js-callback-select]').change(function() {
-alert('Changed to ' + $(this).val());
+    $('.standard-demo').select2Buttons();
+    $('select[name=js-callback-select]').change(function() {
+    alert('Changed to ' + $(this).val());
 });
 $('select[name=no-default-select]').select2Buttons({noDefault: true});
 </script>
 
 </body>
 </html>
+
+<?php 
+  //php代码，用于登录时密码错误弹框**************************************************************
+    if (!isset($_SESSION['alert']) ){
+      $_SESSION['alert'] = 0;
+    }
+    else if ($_SESSION['alert'] ==1){
+      $_SESSION['alert'] = 0;
+      echo '<script type="text/javascript">alert("登录失败！用户名或密码错误！");</script>' ;
+    }
+    else if ($_SESSION['alert'] ==2){
+      $_SESSION['alert'] = 0;
+      echo '<script type="text/javascript">alert("登录成功！");</script>' ;
+    }
+?>

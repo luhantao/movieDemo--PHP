@@ -27,9 +27,12 @@
             $contain = mysqli_fetch_array($result_handle);
             if ($nums != 1) {
                 $result = "登录失败！用户名或密码错误！";
+                $_SESSION['alert'] = 1;
             }
             else{
                 $result = "登录成功！欢迎您，".$this->user." ! ";
+                $_SESSION['alert'] = 2;
+
                 $lifetime = 30; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
                 $_SESSION['user'] = "$this->user" ;
