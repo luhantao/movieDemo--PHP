@@ -5,7 +5,7 @@
 	*/
 	class user_control
 	{
-		var $handle;
+		var $handle; // a class of user_query
 		function __construct($name , $pass , $change_pass , $email , $phone)
 		{
 			$stored_pass = md5($pass);

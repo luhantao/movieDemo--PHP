@@ -6,9 +6,8 @@
 	$password = $_POST['password'];
 	
 	$handle = new user_control($name , $password ,
-	  null , null , null);
+	      null , null , null); //a class of user_control
+
 	$result = $handle ->login ();
-	
-	//echo $_SESSION['user'];
 	header("Location: ../index.php"); 
 ?>

@@ -47,10 +47,10 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >   
           <ul class="nav navbar-nav">
             <li  >
-               <a style= "position: absoulute ;left: 20% ;color: #ffffff" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 您好，欢迎来到&nbsp</a>
+               <a style= "position: absoulute ;left: 20% ;color: #ffffff" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 您好，欢迎来到&nbsp</a>
             </li>
             <li >
-               <a href="index.php" style= "color: #ffff00">&nbsp&nbsp&nbsp爆米花电影网</a>
+               <a href="index.php" style= "color: #ffff00">&nbsp;&nbsp;&nbsp;爆米花电影网</a>
             </li>
           </ul>
 
@@ -83,10 +83,10 @@
                </a>
               <ul class="dropdown-menu">
                 <li>
-                   <a href="#">修改密码</a>
+                   <a href="view/changepass_view.php">修改密码</a>
                 </li>
                 <li>
-                   <a href="logout.php">修改个人信息</a>
+                   <a href="#modal-container-3" data-toggle="modal">修改个人信息</a>
                 </li>
                 <li>
                    <a href="logout.php">退出</a>
@@ -112,7 +112,7 @@
                <a id="modal-5" href="#modal-container-5" role="button" class="btn" data-toggle="modal">关于我们</a>
             </li>   
             <li>
-               <a style= "position: absoulute ;right: 20%" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </a>
+               <a style= "position: absoulute ;right: 20%" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
             </li>
 
           </ul>
@@ -169,7 +169,7 @@
                 <label for="inputSex3" class="col-sm-3 control-label">性别</label>
                 <div class="col-sm-8">
                   <input type="radio"  id="male"  name="userSex"/>
-                    男&nbsp &nbsp
+                    男&nbsp; &nbsp;
                   <input type="radio"  id="female"  name="userSex"/>
                     女
                 </div>
@@ -183,8 +183,8 @@
             </form>
           </div>  
           <p>
-            &nbsp <br>       
-            &nbsp <br>
+            &nbsp; <br>       
+            &nbsp; <br>
           </p>
 
           </div>       
@@ -236,17 +236,6 @@
                   <input type="text" class="form-control" id="inputNumber3" name="userNumber"/>
                 </div>          
               </div>
-
-              <div class="form-group">
-                <label for="inputSex3" class="col-sm-3 control-label">性别</label>
-                <div class="col-sm-8">
-                  <input type="radio"  id="male"  name="userSex"/>
-                    男&nbsp &nbsp
-                  <input type="radio"  id="female"  name="userSex"/>
-                    女
-                </div>
-              </div>   
-
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-10">
                   <button type="submit" class="btn btn-primary btn-lg">修改</button>
@@ -255,8 +244,8 @@
             </form>
           </div>  
           <p>
-            &nbsp <br>       
-            &nbsp <br>
+            &nbsp; <br>       
+            &nbsp; <br>
           </p>
 
           </div>       
@@ -292,14 +281,6 @@
                 <div class="col-sm-9">
                   <input type="password" class="form-control" id="inputPassword3"  name="password"/>
                 </div>
-                
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <div class="checkbox">
-                    <label><input type="checkbox" />记住我</label>
-                  </div>
-                </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
@@ -309,8 +290,8 @@
             </form>
           </div>  
             <p>
-               &nbsp <br>       
-               &nbsp <br>
+               &nbsp; <br>       
+               &nbsp; <br>
             </p>
 
           </div>       
@@ -342,11 +323,11 @@
             </button>
             <p>
                <h1 align ="center"> <font size =7><b>我的订单</b></font></h1>
-               &nbsp <br>
+               &nbsp; <br>
             </p>
           <p>
-            &nbsp <br>       
-            &nbsp <br>
+            &nbsp; <br>       
+            &nbsp; <br>
           </p>
           </div>       
         </div>   
@@ -373,7 +354,7 @@
             </button>
             <p>
                <h1 align ="center"> <font size =7><b>购票页面</b></font></h1>
-               &nbsp <br>
+               &nbsp; <br>
             </p>
 
         <div class="col-md-12 column">
@@ -430,33 +411,6 @@
                     <option value="37">03-7</option>
                     <option value="38">03-8</option>
 
-                    <option value="41">04-1</option>
-                    <option value="42">04-2</option>
-                    <option value="43">04-3</option>
-                    <option value="44">04-4</option>
-                    <option value="45">04-5</option>
-                    <option value="46">04-6</option>
-                    <option value="47">04-7</option>
-                    <option value="48">04-8</option>
-
-                    <option value="51">05-1</option>
-                    <option value="52">05-2</option>
-                    <option value="53">05-3</option>
-                    <option value="54">05-4</option>
-                    <option value="55">05-5</option>
-                    <option value="56">05-6</option>
-                    <option value="57">05-7</option>
-                    <option value="58">05-8</option>
-
-                    <option value="61">06-1</option>
-                    <option value="62">06-2</option>
-                    <option value="63">06-3</option>
-                    <option value="64">06-4</option>
-                    <option value="65">06-5</option>
-                    <option value="66">06-6</option>
-                    <option value="67">06-7</option>
-                    <option value="68">06-8</option>
-
                   </select>
                   <p>&nbsp<br> </p>
                 </div>
@@ -475,8 +429,8 @@
             </form>
           </div>  
             <p>
-               &nbsp <br>       
-               &nbsp <br>
+               &nbsp; <br>       
+               &nbsp; <br>
             </p>
 
           </div>       
@@ -618,14 +572,11 @@ $('select[name=no-default-select]').select2Buttons({noDefault: true});
 <?php 
   //php代码，用于登录时密码错误弹框**************************************************************
     if (!isset($_SESSION['alert']) ){
-      $_SESSION['alert'] = 0;
+      $_SESSION['alert'] = "";
     }
-    else if ($_SESSION['alert'] ==1){
-      $_SESSION['alert'] = 0;
-      echo '<script type="text/javascript">alert("登录失败！用户名或密码错误！");</script>' ;
+    else if ($_SESSION['alert'] != ""){
+      echo '<script type="text/javascript">alert(" ' , $_SESSION['alert'] , ' ");</script>' ;
+      $_SESSION['alert'] = "";
     }
-    else if ($_SESSION['alert'] ==2){
-      $_SESSION['alert'] = 0;
-      echo '<script type="text/javascript">alert("登录成功！");</script>' ;
-    }
+    
 ?>
