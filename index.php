@@ -83,7 +83,7 @@
                </a>
               <ul class="dropdown-menu">
                 <li>
-                   <a href="view/changepass_view.php">修改密码</a>
+                   <a href="#modal-container-7" data-toggle="modal">修改密码</a>
                 </li>
                 <li>
                    <a href="#modal-container-3" data-toggle="modal">修改个人信息</a>
@@ -96,9 +96,6 @@
 
             <li class ="active ">
                <a id="modal-1" href="#modal-container-6" role="button" class="btn" data-toggle="modal">电影票购买</a>
-            </li>
-            <li class ="active ">
-               <a id="modal-3" href="#modal-container-3" role="button" class="btn" data-toggle="modal">修改用户信息</a>
             </li>
             <li class ="active ">
                <a id="modal-4" href="#modal-container-4" role="button" class="btn" data-toggle="modal">我的订单</a>
@@ -166,16 +163,6 @@
               </div>
 
               <div class="form-group">
-                <label for="inputSex3" class="col-sm-3 control-label">性别</label>
-                <div class="col-sm-8">
-                  <input type="radio"  id="male"  name="userSex"/>
-                    男&nbsp; &nbsp;
-                  <input type="radio"  id="female"  name="userSex"/>
-                    女
-                </div>
-              </div>   
-
-              <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-10">
                   <button type="submit" class="btn btn-primary btn-lg" >注册</button>
                 </div>
@@ -217,23 +204,35 @@
             </button>
             <p>
                <h1 align ="center"> <font size =7><b>修改用户信息</b></font></h1>
-               &nbsp <br>
+               &nbsp; <br>
             </p>
 
         <div class="col-md-12 column">
 
-            <form class="form-horizontal" role="form" name="login" action="dologin.jsp" method="post">
+            <form class="form-horizontal" role="form" name="change_data" action="view/changedata_view.php" method="post">
 
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">输入邮箱</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">原有邮箱</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control" id="inputEmail3" name="userEmail"/>
+                  <p><b>fuck</b></p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">修改邮箱</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="inputEmail3" name="email"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">原有电话</label>
+                <div class="col-sm-8">
+                  <p><b>fuck</b></p>
                 </div>
               </div>
               <div class="form-group">          
-                <label for="inputNumber3" class="col-sm-3 control-label">输入电话</label>
+                <label for="inputNumber3" class="col-sm-3 control-label">修改电话</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="inputNumber3" name="userNumber"/>
+                  <input type="text" class="form-control" id="inputNumber3" name="phone"/>
                 </div>          
               </div>
               <div class="form-group">
@@ -251,6 +250,73 @@
           </div>       
         </div>   
       </div>
+
+<!--修改密码 -->
+      <div class="modal fade" id="modal-container-7" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-hidden="true" style="margin-left: 92%; margin-top: 4%; margin-bottom: -9%;">
+                  &times;
+            </button>
+            <p>
+               <h1 align ="center"> <font size =7><b>修改密码</b></font></h1>
+               &nbsp; <br>
+            </p>
+
+        <div class="col-md-12 column">
+
+            <form class="form-horizontal" role="form" name="change_pass" onSubmit="return passchange_check(this)"  action="view/changepass_view.php" method="post">
+
+              <div class="form-group">
+                <label for="inputpassword2" class="col-sm-3 control-label">输入原密码</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputpassword" name="old_password"/>
+                </div>
+              </div>
+              <div class="form-group">          
+                <label for="inputNumber3" class="col-sm-3 control-label">输入新密码</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputpassword2" name="new_password1"/>
+                </div>          
+              </div>
+              <div class="form-group">          
+                <label for="inputNumber3" class="col-sm-3 control-label">再次输入新密码</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputpassword3" name="new_password2"/>
+                </div>          
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                  <button type="submit" class="btn btn-primary btn-lg">修改</button>
+                </div>
+              </div>
+            </form>
+          </div>  
+          <p>
+            &nbsp; <br>       
+            &nbsp; <br>
+          </p>
+
+          </div>       
+        </div>   
+      </div>
+
+      <script type="text/javascript">
+        function passchagnge_check(form){
+             if (form.old_password.value ==""||form.new_password1.value ==""||form.new_password2.value =="" ){
+               alert("信息栏不能有空！");
+               return false;
+             }
+             else if (form.new_password1.value != form.new_password2.value){
+               alert("新密码不一致！");
+               return false;
+             }
+             else {
+               return true;
+             }
+          
+        }
+      </script>
 
 <!--登陆 -->
       <div class="modal fade" id="modal-container-2"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

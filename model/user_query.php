@@ -32,7 +32,7 @@
             else{
                 $_SESSION['alert'] = "登录成功！欢迎您，".$this->user." ! "; //return result
 
-                $lifetime = 30; //设置session生命周期（秒）
+                $lifetime = 300; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
                 $_SESSION['user'] = "$this->user" ;
                 $_SESSION['user_whether_login'] = 1; 
@@ -72,21 +72,45 @@
             $result_handle = mysqli_query($link , $SQL);
             $contain = mysqli_fetch_array($result_handle);
             if ($contain['user_password'] != $this->pass ){
-                $result = "原密码错误！";
-                return $result;
+                $_SESSION['alert'] = "原密码错误！";
+                return $_SESSION['alert'];
             }
             else {
                 $SQL2 = "update users set user_password='$this->change_pass' where user_name='$this->user'";
                 $result_handle = mysqli_query($link , $SQL2);
                 if ($result_handle){
-                    $result = "修改成功！";
+                    $_SESSION['alert'] = "修改成功！";
                 }
                 else{
-                    $result = "修改出错！";
+                    $_SESSION['alert'] = "修改出错！";
                 }
-                return $result;
+                return $_SESSION['alert'];
 
             }
+        }
+
+        function dochange_data (){
+           // session_start(); 
+            $link = mysqli_connect('localhost','root','83795381','myphp') ; //connect to database
+            $SQL = "select * from users where user_name='$this->user'";
+            $result_handle = mysqli_query($link , $SQL);
+            $contain = mysqli_fetch_array($result_handle);
+            if ($this->email == null){
+                $this->email = $contain['user_email'];
+            }
+            if ($this->phone == null){
+                $this->phone = $contain['user_phone'];
+            }
+            $SQL2 = "update users set user_phone='$this->phone' , user_email='$this->email' where user_name='$this->user'";
+            $result_handle = mysqli_query($link , $SQL2);
+            if ($result_handle){
+                $_SESSION['alert'] = "修改成功！";
+            }
+            else{
+                $_SESSION['alert'] = "修改出错！";
+            }
+            return $_SESSION['alert'];
+
         }
 
     }

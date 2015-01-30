@@ -26,6 +26,10 @@
 			$result = $this->handle ->dochange_pass();
 			return $result;	
 		}
+		function change_data(){
+			$result = $this->handle ->dochange_data();
+			return $result;	
+		}
 	}
 
 ?>
