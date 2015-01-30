@@ -212,9 +212,16 @@
             <form class="form-horizontal" role="form" name="change_data" action="view/changedata_view.php" method="post">
 
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">原有邮箱</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">用户邮箱</label>
                 <div class="col-sm-8">
-                  <p><b>fuck</b></p>
+                  <p><b>
+                    <?php 
+                      if (!isset($_SESSION['user_email']) ){
+                          $_SESSION['user_email'] = "" ;   
+                      }
+                      echo $_SESSION['user_email'] ; 
+                    ?>
+                  </b></p>
                 </div>
               </div>
               <div class="form-group">
@@ -224,9 +231,16 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">原有电话</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">用户电话</label>
                 <div class="col-sm-8">
-                  <p><b>fuck</b></p>
+                  <p><b>
+                    <?php 
+                      if (!isset($_SESSION['user_phone']) ){
+                          $_SESSION['user_phone'] = "" ;   
+                      }
+                      echo $_SESSION['user_phone'] ; 
+                    ?>
+                  </b></p>
                 </div>
               </div>
               <div class="form-group">          
@@ -636,7 +650,7 @@ $('select[name=no-default-select]').select2Buttons({noDefault: true});
 </html>
 
 <?php 
-  //php代码，用于登录时密码错误弹框**************************************************************
+  //用于登录时密码错误弹框**************************************************************
     if (!isset($_SESSION['alert']) ){
       $_SESSION['alert'] = "";
     }

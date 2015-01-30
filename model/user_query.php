@@ -36,7 +36,8 @@
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
                 $_SESSION['user'] = "$this->user" ;
                 $_SESSION['user_whether_login'] = 1; 
-                    
+                $_SESSION['user_phone'] = $contain['user_phone']; 
+                $_SESSION['user_email'] = $contain['user_email']; 
             }
             return $_SESSION['alert'] ;
         } 
@@ -105,6 +106,8 @@
             $result_handle = mysqli_query($link , $SQL2);
             if ($result_handle){
                 $_SESSION['alert'] = "修改成功！";
+                $_SESSION['user_phone'] = $this->phone; 
+                $_SESSION['user_email'] = $this->email; 
             }
             else{
                 $_SESSION['alert'] = "修改出错！";
