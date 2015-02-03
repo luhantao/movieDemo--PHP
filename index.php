@@ -534,7 +534,7 @@
                 First Thumbnail label
               </h4>
               <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                Helloworld,Luhantao
               </p>
             </div>
           </div>
@@ -545,7 +545,7 @@
                 Second Thumbnail label
               </h4>
               <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                Helloworld,Luhantao
               </p>
             </div>
           </div>
@@ -556,7 +556,7 @@
                 Third Thumbnail label
               </h4>
               <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                Helloworld,Luhantao
               </p>
             </div>
           </div>
