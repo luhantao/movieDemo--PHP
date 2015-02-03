@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Theme Template for Bootstrap</title>
+    <title>Helloworld,Luhantao</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
@@ -86,7 +86,7 @@
                    <a href="#modal-container-7" data-toggle="modal">修改密码</a>
                 </li>
                 <li>
-                   <a href="#modal-container-3" data-toggle="modal">修改个人信息</a>
+                   <a href="#modal-container-3" data-toggle="modal">个人信息管理</a>
                 </li>
                 <li>
                    <a href="logout.php">退出</a>
@@ -94,9 +94,6 @@
               </ul>
             </li>
 
-            <li class ="active ">
-               <a id="modal-1" href="#modal-container-6" role="button" class="btn" data-toggle="modal">电影票购买</a>
-            </li>
             <li class ="active ">
                <a id="modal-4" href="#modal-container-4" role="button" class="btn" data-toggle="modal">我的订单</a>
             </li>
@@ -106,7 +103,7 @@
             ?>
 
             <li class ="active ">
-               <a id="modal-5" href="#modal-container-5" role="button" class="btn" data-toggle="modal">关于我们</a>
+               <a id="modal-5" href="#modal-container-5" role="button" class="btn" data-toggle="modal">关于作者</a>
             </li>   
             <li>
                <a style= "position: absoulute ;right: 20%" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
@@ -279,7 +276,7 @@
 
         <div class="col-md-12 column">
 
-            <form class="form-horizontal" role="form" name="change_pass" onSubmit="return passchange_check(this)"  action="view/changepass_view.php" method="post">
+            <form class="form-horizontal" role="form" name="change_pass" onSubmit="return passchagnge_check(this)"  action="view/changepass_view.php" method="post">
 
               <div class="form-group">
                 <label for="inputpassword2" class="col-sm-3 control-label">输入原密码</label>
@@ -413,12 +410,12 @@
         </div>   
       </div>
 
-<!--关于我们 -->   
+<!--关于作者 -->   
       <div class="modal fade" id="modal-container-5" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content" >
             <p>
-                <img alt="200x200" src="image/baomihua.jpg" style="width: 100%; height: 43%;margin-bottom:-10px">
+                <img alt="200x200" src="image/author.jpg" style="width: 100%; height: 55%; margin-bottom:-10px ; margin-top:-10px">
             </p>
           </div>       
         </div>   
@@ -563,9 +560,23 @@
               </p>
             </div>
           </div>
-        </div> <a class="left carousel-control" href="#carousel-343775" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-343775" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div> 
+        <a class="left carousel-control" href="#carousel-343775" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a> 
+        <a class="right carousel-control" href="#carousel-343775" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
-      
+
+   <!--  载入时幻灯片自动开始滚动  -->
+      <script type="text/javascript">
+     // $(function(){
+          $('.carousel').carousel( {interval: 4000} );
+     // });
+      </script>
+
+
 <!-- 电影信息界面 -->
       
       <div class="row">
@@ -580,8 +591,9 @@
                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
               </p>
               <p>
-                 <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                 <a href="#modal-container-6" role="button" class="btn btn-primary" data-toggle="modal">购票</a> <a class="btn" href="#">Action</a>
               </p>
+    
             </div>
           </div>
         </div>
@@ -596,7 +608,7 @@
                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
               </p>
               <p>
-                 <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                 <a href="#modal-container-6" role="button" class="btn btn-primary" data-toggle="modal">购票</a> <a class="btn" href="#">Action</a>
               </p>
             </div>
           </div>
@@ -612,7 +624,7 @@
                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
               </p>
               <p>
-                 <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                 <a href="#modal-container-6" role="button" class="btn btn-primary" data-toggle="modal">购票</a> <a class="btn" href="#">Action</a>
               </p>
             </div>
           </div>
@@ -631,7 +643,6 @@
     </div>
   </div>
 </div>
-
 
 <script type="text/javascript">
     $(document).ready(function(){
