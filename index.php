@@ -121,7 +121,7 @@
             </button>
             <p>
                <h1 align ="center"> <font size =7><b>注册</b></font></h1>
-               &nbsp <br>
+               &nbsp; <br>
             </p>
 
         <div class="col-md-12 column">
@@ -415,7 +415,7 @@
         <div class="modal-dialog">
           <div class="modal-content" >
             <p>
-                <img alt="200x200" src="image/author.jpg" style="width: 100%; height: 55%; margin-bottom:-10px ; margin-top:-10px">
+                <img alt="200x200" src="image/author.jpg" style="width: 100%; height: 70%; margin-bottom:-10px ; margin-top:-10px">
             </p>
           </div>       
         </div>   
@@ -489,7 +489,7 @@
                     <option value="38">03-8</option>
 
                   </select>
-                  <p>&nbsp<br> </p>
+                  <p>&nbsp;<br> </p>
                 </div>
               </div>
 
@@ -528,10 +528,20 @@
         </ol>
         <div class="carousel-inner">
           <div class="item">
-            <img alt="" src="image/congcongnanian2.jpg" style="width: 100%; "/>
+<!--        <img src="image/ppt1.jpg" style="width: 100%; "/> -->            
+
+            <img <?php echo 'src="image/ppt1.jpg" '; ?> style="width: 100%; "/>
             <div class="carousel-caption">
               <h4>
-                First Thumbnail label
+                
+                <?php 
+                    require_once("view/getmovie_view.php");
+                    require_once("model/movie_query.php");
+                    $content = "description";
+                    $name = getname(1);
+                    $description = getmovie($name ,$content);
+                    echo "$description";
+                ?>
               </h4>
               <p>
                 Helloworld,Luhantao
@@ -539,7 +549,7 @@
             </div>
           </div>
           <div class="item active">
-            <img alt="" src="image/quanchengtongji2.jpg" style="width: 100%; "/>
+            <img <?php echo 'src="image/ppt2.jpg" '; ?> style="width: 100%; "/>
             <div class="carousel-caption">
               <h4>
                 Second Thumbnail label
@@ -550,7 +560,7 @@
             </div>
           </div>
           <div class="item">
-            <img alt="" src="image/xingjichuanyue2.jpg" style="width: 100%; "/>
+            <img <?php echo 'src="image/ppt3.jpg" '; ?> style="width: 100%; "/>
             <div class="carousel-caption">
               <h4>
                 Third Thumbnail label

@@ -30,7 +30,7 @@
                 $_SESSION['alert'] = "登录失败！用户名或密码错误！";
             }
             else{
-                $_SESSION['alert'] = "登录成功！欢迎您，".$this->user." ! "; //return result
+                // $_SESSION['alert'] = "登录成功！欢迎您，".$this->user." ! "; 
 
                 $lifetime = 300; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
