@@ -533,18 +533,18 @@
             <img <?php echo 'src="image/ppt1.jpg" '; ?> style="width: 100%; "/>
             <div class="carousel-caption">
               <h4>
-                
                 <?php 
                     require_once("view/getmovie_view.php");
                     require_once("model/movie_query.php");
-                    $content = "description";
                     $name = getname(1);
+                    echo "$name";
+                    
+        echo '</h4> <p>';
+
+                    $content = "description";
                     $description = getmovie($name ,$content);
                     echo "$description";
                 ?>
-              </h4>
-              <p>
-                Helloworld,Luhantao
               </p>
             </div>
           </div>
@@ -552,10 +552,16 @@
             <img <?php echo 'src="image/ppt2.jpg" '; ?> style="width: 100%; "/>
             <div class="carousel-caption">
               <h4>
-                Second Thumbnail label
-              </h4>
-              <p>
-                Helloworld,Luhantao
+                <?php 
+                    $name = getname(2);
+                    echo "$name";
+                    
+        echo '</h4> <p>';
+
+                    $content = "description";
+                    $description = getmovie($name ,$content);
+                    echo "$description";
+                ?>
               </p>
             </div>
           </div>
@@ -563,10 +569,16 @@
             <img <?php echo 'src="image/ppt3.jpg" '; ?> style="width: 100%; "/>
             <div class="carousel-caption">
               <h4>
-                Third Thumbnail label
-              </h4>
-              <p>
-                Helloworld,Luhantao
+                <?php 
+                    $name = getname(3);
+                    echo "$name";
+                    
+        echo '</h4> <p>';
+
+                    $content = "description";
+                    $description = getmovie($name ,$content);
+                    echo "$description";
+                ?>
               </p>
             </div>
           </div>
@@ -582,8 +594,9 @@
    <!--  载入时幻灯片自动开始滚动  -->
       <script type="text/javascript">
      // $(function(){
-          $('.carousel').carousel( {interval: 4000} );
+          $('.carousel').carousel( {interval: 3500} );
      // });
+
       </script>
 
 
