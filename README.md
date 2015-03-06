@@ -24,4 +24,4 @@ Sublime text/Vim + Apache + PHP + Bootstrap(html,css,js)
 
 网站链接
 ==============
-[点击这里你可以链接到www.google.com](http://www.google.com)<br />
+[点击这里你可以链接到www.baidu.com](http://www.baidu.com)<br />
