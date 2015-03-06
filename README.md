@@ -24,4 +24,5 @@ Sublime text/Vim + Apache + PHP + Bootstrap(html,css,js)
 
 网站链接
 ==============
-[点击这里你可以链接到www.baidu.com](http://www.baidu.com)<br />
+[http://luhantao.sinaapp.com/](http://luhantao.sinaapp.com/)<br />
+(有一部分功能还没完全实现，正在努力开发中 ^_^)
