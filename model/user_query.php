@@ -34,6 +34,7 @@
 
                 $lifetime = 300; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
+                
                 $_SESSION['user'] = "$this->user" ;
                 $_SESSION['user_whether_login'] = 1; 
                 $_SESSION['user_phone'] = $contain['user_phone']; 

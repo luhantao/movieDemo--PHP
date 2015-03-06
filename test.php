@@ -104,7 +104,7 @@
         <div>
         	<?php 
         		for ($i=1; $i <7 ; $i++) { 
-        			echo '<img src="image/test' , "$i" , '.jpg" style="width: 500px" />';			
+        			echo '<img src="image/poster' , "$i" , '.jpg" style="width: 500px" />';			
         			echo '<p><br></p>';
         		}
 
