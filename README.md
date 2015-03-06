@@ -7,6 +7,10 @@
 ==============
 Sublime text/Vim + Apache + PHP + Bootstrap(html,css,js)   
 
+网站链接
+==============
+[http://luhantao.sinaapp.com/](http://luhantao.sinaapp.com/)<br />
+(有一部分功能还没完全实现，正在努力开发中 ^_^)
 
 截图
 ==============
@@ -22,7 +26,4 @@ Sublime text/Vim + Apache + PHP + Bootstrap(html,css,js)
 
 ![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/3.png)
 
-网站链接
-==============
-[http://luhantao.sinaapp.com/](http://luhantao.sinaapp.com/)<br />
-(有一部分功能还没完全实现，正在努力开发中 ^_^)
+
