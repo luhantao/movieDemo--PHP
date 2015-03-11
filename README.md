@@ -20,16 +20,10 @@ Apache + PHP + MySQL + Bootstrap(jQuery + Ajax)
 ![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/1.jpg)
 
 
-![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/2.jpg)
-
-
 ![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/5.jpg)
 
 
 ![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/6.png)
-
-
-![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/8.jpg)
 
 
 ![](https://raw.githubusercontent.com/luhantao/movieDemo--PHP/master/screenshots/9.jpg)
