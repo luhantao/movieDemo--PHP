@@ -325,10 +325,30 @@
         <h1 align ="center"> <font size =7><b>我的订单</b></font></h1>
         &nbsp; <br>
         </p>
-        <p>
-        &nbsp; <br>
-        &nbsp; <br>
-        </p>
+        <!-- 订单弹窗  -->
+        <div class="container-fluid">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>电影名字</th>
+                <th>播放日期</th>
+                <th>播放时间</th>
+                <th>座位信息</th>
+                <th>退票</th>
+              </tr>
+            </thead>
+            <tbody id="ticket_table">
+              <!-- 
+              <tr class="info">
+                <td>4</td>
+                <td>TB - Monthly</td>
+                <td>04/04/2012</td>
+                <td>Call in to confirm</td>
+                <td><button class="btn btn-warning btn-mini" type="button">退票</button></td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -343,3 +363,81 @@
     </div>
   </div>
 </nav>
+
+<!-- 我的订单查看 + 退票  -->
+<script type="text/javascript">
+  $("[href='#modal-container-4']").click(function(){
+      //获取当前日期
+      var d = new Date();
+      var date1 = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate() ;
+      var date2 = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + (d.getDate()+1) ;
+      //防止订单记录重叠
+      $('#ticket_table tr[name = "temp"]').remove();
+      //ajax请求用户订单
+      var user_order = $.ajax({url:"control/ajax_getorders.php",async:false});
+      if (user_order.responseText == "no"){
+          alert("用户已失效，请重新登录！");
+          window.location.href="index.php"; 
+          return false;
+      }
+      else {
+        //获得当前用户购买的电影票信息,全局变量，可用于之后的退票
+         response_order = eval( user_order.responseText );
+         //alert(response_order[3].seat);
+           for (var i = 0; i < response_order.length; i++) {
+              if (response_order[i].date == 1){
+                  var date_transform = date1;
+              }
+              else {
+                  var date_transform = date2;
+              }
+              //更改座位显示方式
+              var seat_transform = response_order[i].seat.substr(0,1) + '排' +
+                                  response_order[i].seat.substr(1,1) + '座';
+               $('#ticket_table').append( 
+                  '<tr class="success" name="temp"><td>'
+                            + response_order[i].movie_name + '</td><td>'
+                            + date_transform + '</td><td>'
+                            + response_order[i].time + '</td><td>'
+                            + seat_transform + 
+                  '</td><td><button name="refund' + i +
+                    '" class="btn btn-warning btn-mini" type="button">退票</button></td></tr>'
+               );
+           }
+      }
+  });
+  
+  //退票按钮点击事件
+  $(document).on("click", "#ticket_table button", function(){
+      var current_name = $(this).attr("name");
+      //从name="refund*"属性，获取response_order[i]中的i值
+      var order_id = current_name.substr(6,1);
+      //alert(response_order[order_id].movie_name);
+
+      var logon_test = $.ajax({url:"control/ajax_getmovie.php?type=logon_test",async:false});
+      if (logon_test.responseText =="no"){
+          alert ("用户已失效，请重新登录！");
+          window.location.href="index.php"; 
+          return false;
+      }
+      else {
+          var refund_ticket = $.ajax({
+              type:"post",
+              url:"control/tickets_control.php" , 
+              data: 
+              {
+                 type : "refund",
+                 movie_name : response_order[order_id].movie_name,    
+                 movie_date : response_order[order_id].date ,    
+                 movie_time : response_order[order_id].time ,    
+                 movie_seat : response_order[order_id].seat 
+              },    
+              async:false
+          });
+          alert (refund_ticket.responseText);
+          window.location.href="index.php"; 
+      }
+
+
+  });
+</script>

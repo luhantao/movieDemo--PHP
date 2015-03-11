@@ -183,9 +183,9 @@
       <!-- 购票功能 + 多次Ajax -->
       <script type="text/javascript">
         $("[href='#modal-container-6']").click(function(){
-            //获取当前电影id,Ajax查询得到电影名
+            //获取当前电影id,Ajax查询得到电影名,学会this的用法！！！！！！！！！！！1
             poster_id = $(this).attr("name");
-            loadXMLDoc("view/ajax_getmovie.php?type=id&&poster_id="+poster_id , function(){
+            loadXMLDoc("control/ajax_getmovie.php?type=id&&poster_id="+poster_id , function(){
               if (xmlhttp.readyState==4 && xmlhttp.status==200){
                 // document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
                 response_name = xmlhttp.responseText;  //全局变量
@@ -230,7 +230,7 @@
 
             //获取当前电影时间
             $('#movie_time').show();        
-            loadXMLDoc("view/ajax_getmovie.php?type=time&&name="+response_name+"&&value="+current_date , function(){
+            loadXMLDoc("control/ajax_getmovie.php?type=time&&name="+response_name+"&&value="+current_date , function(){
               if (xmlhttp.readyState==4 && xmlhttp.status==200){
                 //alert(xmlhttp.responseText);   //debug*************
                 var response_time = eval( xmlhttp.responseText );  //eval函数执行json转换
@@ -258,7 +258,7 @@
             $('#movie_screen').show();        
             $('#movie_seats').show();        
             //获取当前电影场次的座位情况
-            loadXMLDoc("view/ajax_getmovie.php?type=seats&&name="+response_name
+            loadXMLDoc("control/ajax_getmovie.php?type=seats&&name="+response_name
                        +"&&value1="+current_date+"&&value2="+current_time , function(){
               if (xmlhttp.readyState==4 && xmlhttp.status==200){
                //alert(xmlhttp.responseText);      //debug************
@@ -288,7 +288,7 @@
             });
         });
 
-        //绑定select_seats的change事件,统计座位按钮被按次数。直接用click事件有不知名的bug
+        //绑定select_seats的change事件,统计座位按钮被按次数。
         $(document).on("change", "#select_seats", function(){
            seats_count ++;
            //alert( $(this).val() + " " + seats_count);      //debug******************
@@ -298,9 +298,9 @@
         $(document).on("click", "#buy_tickets", function(){
           //先判断用户是否登录
           //用jQuery的Ajax方法可以大大简化代码！！这个位置用原生的Ajax方法很诡异会出错************
-          var logon_test = $.ajax({url:"view/ajax_getmovie.php?type=logon_test",async:false});
+          var logon_test = $.ajax({url:"control/ajax_getmovie.php?type=logon_test",async:false});
           if (logon_test.responseText =="no"){
-              alert ("购票失败！用户请先登录！");
+              alert ("购票失败！请先登录！");
               return false;
           }
           else {            //logon_test.responseText =="yes"
@@ -319,14 +319,15 @@
               else {   //ajax发送购票信息，后台处理购票请求
                   var buyticket = $.ajax({
                       type:"post",
-                      url:"view/buytickets_view.php" , 
+                      url:"control/tickets_control.php" , 
                       data: //"movie_name="+response_name+"&&movie_date="+$('#select_date').val()+
                                  //"&&movie_time="+$('#select_time').val()+"&&movie_seat="+$('#select_seats').val() ,
                       {
+                         type : "buy",
                          movie_name : response_name,    
                          movie_date : $('#select_date').val() ,    
                          movie_time : $('#select_time').val() ,    
-                         movie_seat : $('#select_seats').val() ,
+                         movie_seat : $('#select_seats').val() 
                       },    
                       async:false
                   });
@@ -423,7 +424,7 @@
           <blockquote style="background-color:#ffffff ">
             <p>
               本网站是一个关于电影信息查询，以及电影票购买的网站。
-            </p> <small>开发：陆瀚陶&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>广州大学城中山大学东校区至善园2号604房</cite></small>
+            </p> <small>开发：陆瀚陶（qq:1312294854）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>广州大学城中山大学东校区至善园2号604房</cite></small>
           </blockquote>
         </div>
       </div>

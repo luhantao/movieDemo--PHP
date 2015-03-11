@@ -31,7 +31,7 @@
             else{
                 // $_SESSION['alert'] = "登录成功！欢迎您，".$this->user." ! "; 
 
-                $lifetime = 600; //设置session生命周期（秒）
+                $lifetime = 3600; //设置session生命周期（秒）
                 setcookie(session_name(),session_id(),time()+$lifetime,"/");
                 
                 $_SESSION['user'] = "$this->user" ;
@@ -58,6 +58,8 @@
                     $_SESSION['alert'] = "注册成功！";
                     $_SESSION['user'] = "$this->user" ;
                     $_SESSION['user_whether_login'] = 1; 
+                    $_SESSION['user_phone'] = "$this->phone";
+                    $_SESSION['user_email'] = "$this->email";
                 }
                 else{
                     $_SESSION['alert'] = "注册出错！";

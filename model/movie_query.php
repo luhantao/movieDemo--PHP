@@ -161,7 +161,7 @@
         }
 
         function delete_record(){
-            $sql_delete = "delect from tickets_sold where user_name='$this->user_name and movie_name='$this->movie_name' 
+            $sql_delete = "delete from tickets_sold where user_name='$this->user_name' and movie_name='$this->movie_name' 
                                 and date='$this->date' and time='$this->time' and seat='$this->seat'";
             $result_handle = mysqli_query($this->link , $sql_delete);
             if ($result_handle){
@@ -169,7 +169,7 @@
                 return $result;
             }
             else{
-                return "failed";
+                return "first_step_failed";
             }
         }
 
@@ -192,10 +192,34 @@
                 return "succeed";
             }
             else{
-                return "failed";
+                return "step_two_failed";
             }
         }
 
+    }
+
+    /**
+    * 查询已售出的电影票
+    */
+    class tickets_sold_query
+    {
+        var $link;
+        var $user_name;
+        function __construct($user_name)
+        {
+            $this->user_name = $user_name;
+            $this->link = mysqli_connect('localhost','root','83795381','myphp') ; 
+        }
+
+        function query(){
+            $sql = "select * from tickets_sold where user_name ='$this->user_name' ";     
+            $result_handle = mysqli_query($this->link , $sql);
+            //$contain = mysqli_fetch_array($result_handle);
+            while( $row = mysqli_fetch_array($result_handle)) {
+                $data[]=$row;
+            }
+            return $data;
+        }
     }
 
 
