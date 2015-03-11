@@ -18,7 +18,7 @@ jQuery.fn.select2Buttons = function(options) {
     var multiselect = select.attr('multiple');
     select.hide();
 
-    var buttonsHtml = $('<div class="select2Buttons"></div>');
+    var buttonsHtml = $('<div class="select2Buttons" id="show_buttons"></div>');
     var selectIndex = 0;
     var addOptGroup = function(optGroup){
       if (optGroup.attr('label')){
@@ -29,7 +29,8 @@ jQuery.fn.select2Buttons = function(options) {
         var liHtml = $('<li></li>');
         if ($(this).attr('disabled') || select.attr('disabled')){
           liHtml.addClass('disabled');
-          liHtml.append('<span>' + $(this).html() + '</span>');
+          liHtml.append('<span style="background:#d1d1d1; border-color:#d1d1d1; color:#FFF;">' 
+              + $(this).html() + '</span>');
         }else{
           liHtml.append('<a href="#" data-select-index="' + selectIndex + '">' + $(this).html() + '</a>');
         }

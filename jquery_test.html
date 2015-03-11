@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jquery_test</title>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
+	
+</head>
+	<body>
+		
+			<h1 onclick="test()">jquery_test</h1>
+	
+		
+	</body>
+	<script>
+		var newsArray = [
+			"1.aaaaa",
+			"2.bbbbb",
+			"3.ccccc",
+			"4.ddddd",
+			"5.eeeee",
+			"6.fffff",
+			"7.ggggg",
+			"8.hhhhh",
+			"9.iiiii"
+		];
+		var newsLength = newsArray.length;
+		var newsInterval = 4000;
+		$('h1').after('<ul id="news-feed"></ul>');
+
+		for (var i = 0; i < newsLength; i++) {
+			$('#news-feed').append('<li>' + newsArray[i] + '</li>');
+		}
+
+		function slideHeadline(){
+			$('#news-feed li:last').clone().prependTo('#news-feed').hide();
+			$('#news-feed li:first').fadeIn(1000).slideDown(500);
+			$('#news-feed li:last').remove();
+		}
+		setInterval(slideHeadline, newsInterval);
+
+	</script>
+	<script type="text/javascript">
+		function test(){
+			alert(newsArray[2]);
+		}	
+	</script>
+</html>
